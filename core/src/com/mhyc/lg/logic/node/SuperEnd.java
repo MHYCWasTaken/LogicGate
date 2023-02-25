@@ -13,6 +13,8 @@ public class SuperEnd {
 
     public ArrayList<Light> lights = new ArrayList<Light>();
 
+    SuperSource head;
+
     public void addLight(Light l) {
         lights.add(l);
     }

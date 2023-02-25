@@ -15,6 +15,8 @@ public class SuperSource {
 
 	public ArrayList<Switch> switchs = new ArrayList<Switch>();
 
+	SuperEnd end;
+
 	public void addSwitch(Switch sw) {
 		switchs.add(sw);
 		sw.in.active = false;
@@ -43,9 +45,8 @@ public class SuperSource {
 	public SuperSource duplicate() {
 		SuperSource ss = new SuperSource();
 		for (Switch sw : switchs) {
-			ss.addSwitch(sw.duplicate());
 		}
-		
+		return ss;
 	}
 	
 }

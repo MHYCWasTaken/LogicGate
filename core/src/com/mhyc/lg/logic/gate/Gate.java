@@ -15,8 +15,9 @@ public class Gate {
     public ArrayList<NodeIn> inNodes = new ArrayList<NodeIn>();
     public ArrayList<NodeOut> outNodes = new ArrayList<NodeOut>();
     
-    public void updateOuts() {
-        return;
+    public boolean updateOuts() {
+        return true;
+        // T: no need upd, F: upd
     }
 
 }

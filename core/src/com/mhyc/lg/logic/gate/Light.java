@@ -23,8 +23,12 @@ public class Light extends Gate {
     }
 
     @Override
-    public void updateOuts() {
+    public boolean updateOuts() {
+        if(out.active == in.active) {
+            return true;
+        }
         out.active = in.active;
+        return false;
     }
 
     public boolean getActive() {

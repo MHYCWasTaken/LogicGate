@@ -21,15 +21,30 @@ public class Module extends Gate {
 	public Module(ModuleTemplate template) {
 		this.template = template;
 		this.head = template.head;
+		this.end = template.end;
 		for (Switch sw : head.switchs) {
 			this.inNodes.add(sw.in);
 		}
-		
+		for (Light lt : end.lights) {
+			this.outNodes.add(lt.out);
+		}
 	}
 
 	@Override
-	public void updateOuts() {
+	public boolean updateOuts() {
+		ArrayList<Boolean> nos = new ArrayList<Boolean>();
+		for (NodeOut no : this.outNodes) {
+			nos.add(no.active);
+		}
 		this.head.run();
+		boolean flag = true;
+		for (int i = 0; i < nos.size(); i++) {
+			if(nos.get(i) != this.outNodes.get(i).active) {
+				flag = false;
+				break;
+			}
+		}
+		return flag;
 	}
 	
 }

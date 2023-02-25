@@ -30,8 +30,12 @@ public class Switch extends Gate {
     }
 
     @Override
-    public void updateOuts() {
+    public boolean updateOuts() {
+        if(out.active == in.active) {
+            return true;
+        }
         out.active = in.active;
+        return false;
     }
 
     public void changeActive() {
@@ -41,10 +45,6 @@ public class Switch extends Gate {
     public void setActive(boolean active) {
         in.active = active;
         updateOuts();
-    }
-
-    public Switch duplicate() {
-        Switch sw = new Switch();
     }
 
 }

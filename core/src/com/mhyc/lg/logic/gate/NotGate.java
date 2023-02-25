@@ -21,8 +21,12 @@ public class NotGate extends Gate {
     }
     
     @Override
-    public void updateOuts() {
+    public boolean updateOuts() {
+        if(out1.active == !in1.active) {
+            return true;
+        }
         out1.active = !in1.active;
+        return false;
     }
 
 }

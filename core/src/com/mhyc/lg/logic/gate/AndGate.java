@@ -23,8 +23,12 @@ public class AndGate extends Gate {
     }
     
     @Override
-    public void updateOuts() {
+    public boolean updateOuts() {
+        if(out1.active == in1.active & in2.active) {
+            return true;
+        }
         out1.active = in1.active && in2.active;
+        return false;
     }
 
 }
