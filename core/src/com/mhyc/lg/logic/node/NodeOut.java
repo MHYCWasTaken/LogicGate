@@ -13,4 +13,14 @@ public class NodeOut extends Node {
         super(belong);
     }
     
+    @Override
+    public NodeOut duplicate(Gate g) {
+        return new NodeOut(g);
+    }
+
+    @Override
+    public int getIndex() {
+        return this.belong.outNodes.indexOf(this);
+    }
+
 }

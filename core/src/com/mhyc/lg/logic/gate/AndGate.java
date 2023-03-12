@@ -31,4 +31,9 @@ public class AndGate extends Gate {
         return false;
     }
 
+    @Override
+    public AndGate duplicate() {
+        return new AndGate();
+    }
+
 }

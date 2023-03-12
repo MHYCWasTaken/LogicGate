@@ -32,4 +32,9 @@ public class Router extends Gate {
         return false;
     }
     
+    @Override
+    public Router duplicate() {
+        return new Router();
+    }
+
 }

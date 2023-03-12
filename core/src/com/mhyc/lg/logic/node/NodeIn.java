@@ -12,5 +12,15 @@ public class NodeIn extends Node {
     public NodeIn(Gate belong) {
         super(belong);
     }
+
+    @Override
+    public NodeIn duplicate(Gate g) {
+        return new NodeIn(g);
+    }
     
+    @Override
+    public int getIndex() {
+        return this.belong.inNodes.indexOf(this);
+    }
+
 }

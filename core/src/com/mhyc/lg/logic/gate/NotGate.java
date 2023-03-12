@@ -29,4 +29,9 @@ public class NotGate extends Gate {
         return false;
     }
 
+    @Override
+    public NotGate duplicate() {
+        return new NotGate();
+    }
+
 }

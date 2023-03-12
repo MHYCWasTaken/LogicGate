@@ -19,7 +19,9 @@ public class Light extends Gate {
         out = new NodeOut(this);
         this.inNodes.add(in);
         this.outNodes.add(out);
-        se.addLight(this);
+        if(se != null) {
+            se.addLight(this);
+        }
     }
 
     @Override
@@ -33,6 +35,11 @@ public class Light extends Gate {
 
     public boolean getActive() {
         return in.active;
+    }
+
+    @Override
+    public Light duplicate() {
+        return new Light(null);
     }
     
 }

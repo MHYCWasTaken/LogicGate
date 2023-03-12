@@ -14,19 +14,14 @@ public class Switch extends Gate {
     public NodeIn in;
     public NodeOut out;
 
-    public Switch() {
-        out = new NodeOut(this);
-        in = new NodeIn(this);
-        outNodes.add(out);
-        inNodes.add(in);
-    }
-
     public Switch(SuperSource ss) {
         out = new NodeOut(this);
         in = new NodeIn(this);
         outNodes.add(out);
         inNodes.add(in);
-        ss.addSwitch(this);
+        if(ss != null) {
+            ss.addSwitch(this);
+        }
     }
 
     @Override
@@ -45,6 +40,11 @@ public class Switch extends Gate {
     public void setActive(boolean active) {
         in.active = active;
         updateOuts();
+    }
+
+    @Override
+    public Switch duplicate() {
+        return new Switch(null);
     }
 
 }

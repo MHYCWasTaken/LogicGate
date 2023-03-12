@@ -20,4 +20,8 @@ public class Gate {
         // T: no need upd, F: upd
     }
 
+    public Gate duplicate() {
+        return new Gate();
+    }
+
 }

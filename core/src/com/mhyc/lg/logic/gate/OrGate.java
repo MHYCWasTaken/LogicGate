@@ -31,4 +31,9 @@ public class OrGate extends Gate {
         return false;
     }
 
+    @Override
+    public OrGate duplicate() {
+        return new OrGate();
+    }
+
 }

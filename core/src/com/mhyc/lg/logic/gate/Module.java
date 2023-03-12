@@ -3,7 +3,6 @@ package com.mhyc.lg.logic.gate;
 import java.util.ArrayList;
 
 import com.mhyc.lg.logic.node.NodeOut;
-import com.mhyc.lg.logic.node.SuperEnd;
 import com.mhyc.lg.logic.node.SuperSource;
 
 /**
@@ -16,20 +15,22 @@ public class Module extends Gate {
 	public ModuleTemplate template;
 
 	public SuperSource head;
-	public SuperEnd end;
 
 	public Module(ModuleTemplate template) {
 		this.template = template;
-		this.head = template.head;
-		this.end = template.end;
-		for (Switch sw : head.switchs) {
+		this.head = template.head.duplicate();
+		System.out.println("in module duplicate complete!");
+		for (Switch sw : this.head.switchs) {
 			this.inNodes.add(sw.in);
+			System.out.println("added a sw");
 		}
-		for (Light lt : end.lights) {
-			this.outNodes.add(lt.out);
+		for (Light l : this.head.end.lights) {
+			this.outNodes.add(l.out);
+			System.out.println("added a l");
 		}
 	}
 
+	/*  USELESS
 	@Override
 	public boolean updateOuts() {
 		ArrayList<Boolean> nos = new ArrayList<Boolean>();
@@ -37,6 +38,7 @@ public class Module extends Gate {
 			nos.add(no.active);
 		}
 		this.head.run();
+		System.out.println("updated!");
 		boolean flag = true;
 		for (int i = 0; i < nos.size(); i++) {
 			if(nos.get(i) != this.outNodes.get(i).active) {
@@ -45,6 +47,11 @@ public class Module extends Gate {
 			}
 		}
 		return flag;
-	}
+	}*/
+	
+	@Override
+    public Module duplicate() {
+        return new Module(template);
+    }
 	
 }

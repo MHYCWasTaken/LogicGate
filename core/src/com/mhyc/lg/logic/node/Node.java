@@ -31,11 +31,19 @@ public class Node {
         w.in = null;
     }
 
+    public int getIndex() {
+        return 0;
+    }
+
     public static void connect(NodeOut from, NodeIn to) {
         from.disconnect();
         Wire w = new Wire(from, to);
         from.wire = w;
         to.wire = w;
+    }
+
+    public Node duplicate(Gate g) {
+        return new Node(g);
     }
     
 }

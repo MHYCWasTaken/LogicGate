@@ -1,6 +1,5 @@
 package com.mhyc.lg.logic.gate;
 
-import com.mhyc.lg.logic.node.SuperEnd;
 import com.mhyc.lg.logic.node.SuperSource;
 
 /**
@@ -15,6 +14,5 @@ public class ModuleTemplate {
 	public String description;
 
 	public SuperSource head;
-	public SuperEnd end;
 	
 }
