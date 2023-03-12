@@ -30,7 +30,7 @@ public class TitleStage extends Stage {
         this.res = res;
 
         crimsonTextSemiBold32 = res.manager.get("fonts/CrimsonText-SemiBold-32.fnt");
-        styleLabel = new LabelStyle(crimsonTextSemiBold32, new Color(1, 1, 1, 1));
+        styleLabel = new LabelStyle(crimsonTextSemiBold32, new Color(0, 0, 0, 0));
         title = new Label("Logic Gate", styleLabel);
         title.setPosition(100, 100);
         Gdx.app.log(res.TAG, "Stage Title added!");
