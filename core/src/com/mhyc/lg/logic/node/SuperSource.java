@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.badlogic.gdx.utils.Queue;
-import com.mhyc.lg.logic.Wire;
 import com.mhyc.lg.logic.gate.Gate;
 import com.mhyc.lg.logic.gate.Light;
 import com.mhyc.lg.logic.gate.Switch;
@@ -52,55 +51,10 @@ public class SuperSource {
 		}
 	}
 
-	/*public SuperSource duplicate3() {
-		SuperSource ss = new SuperSource();
-		Queue<NodeIn> open = new Queue<NodeIn>();
-		HashMap<Gate, Gate> gduped = new HashMap<Gate, Gate>();
-		HashMap<NodeIn, NodeIn> nduped = new HashMap<NodeIn, NodeIn>();
-		for (Switch sw : this.switchs) {
-			NodeIn ni = sw.in;
-			open.addLast(ni);
-			if(!gduped.containsKey(ni.belong)) {
-				gduped.put(ni.belong, ni.belong.duplicate());
-			}
-		}
-		while (open.notEmpty()) {
-			NodeIn ni = open.first();
-			open.removeFirst();
-			Gate gdup = gduped.get(ni.belong);
-			gdup.inNodes.set(ni.getIndex(), ni.duplicate(gdup));
-			if (gdup instanceof Light) {
-				ss.end.addLight((Light) gdup);
-			}
-			if (gdup instanceof Switch) {
-				ss.addSwitch((Switch) gdup);
-			}
-			for (NodeOut no : gdup.outNodes) {
-				if(no.wire == null) {
-					continue;
-				}
-				NodeOut nodup = no.duplicate(gdup);
-				gdup.outNodes.set(no.getIndex(), nodup);
-				Gate gx = no.wire.out.belong;
-				if(!gduped.containsKey(gx)) {
-					gduped.put(gx, gx.duplicate());
-				}
-				NodeIn nix = no.wire.out;
-				NodeIn nixdup = new NodeIn(gduped.get(gx));
-				gx.inNodes.set(nix.belong.inNodes.indexOf(nix), nixdup);
-				Wire w = new Wire(nodup, nixdup);
-				nodup.wire = w;
-				nixdup.wire = w;
-				open.addLast(nix);
-			}
-		}
-		return ss;
-	}*/
-
 	public SuperSource duplicate() {
 		SuperSource ss = new SuperSource();
 		Queue<Gate> open = new Queue<Gate>();
-		HashMap<Gate, Gate> duped = new HashMap<Gate, Gate>();
+		HashMap<Gate, Gate> duped = new HashMap<Gate, Gate>(16);
 		for (Switch sw : this.switchs) {
 			open.addLast(sw);
 			ss.addSwitch(sw);
