@@ -48,13 +48,14 @@ public class Test {
         Node.connect(and2.outNodes.get(0), l.inNodes.get(0));
 
         in1.setActive(false);
-        in2.setActive(false);
+        in2.setActive(true);
 
         xorGateSuperSource.run();
 
         System.out.println(l.getActive());
 
         //////////////////
+        /*
 
         ModuleTemplate xor = new ModuleTemplate();
         xor.head = xorGateSuperSource;
@@ -88,7 +89,7 @@ public class Test {
 
         System.out.println(ll1.getActive() + " " + ll2.getActive());
 
-        System.out.println(((Light) xorGate.outNodes.get(0).belong).getActive());
+        System.out.println(((Light) xorGate.outNodes.get(0).belong).getActive());*/
 
     }
 }

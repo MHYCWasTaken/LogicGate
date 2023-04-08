@@ -33,9 +33,11 @@ public class SuperSource {
 		Queue<NodeIn> open = new Queue<NodeIn>();
 		for (Switch sw : switchs) {
 			open.addLast(sw.in);
+			System.out.println("add sw to open");
 		}
 		while(open.notEmpty()) {
 			Gate g = open.first().belong;
+			System.out.println(g);
 			open.removeFirst();
 			boolean flag = g.updateOuts();
 			for (NodeOut no : g.outNodes) {
@@ -44,7 +46,9 @@ public class SuperSource {
 				}
 				no.wire.active = no.active;
 				no.wire.out.active = no.active;
+				System.out.println(flag);
 				if (!flag) {
+					System.out.println("in");
 					open.addLast(no.wire.out);
 				}
 			}
